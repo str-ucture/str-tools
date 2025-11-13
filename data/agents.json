@@ -1,0 +1,38 @@
+[
+  {
+    "title": "DIN EN 1995 Assistant",
+    "description": "Expert AI for German timber construction standards (DIN EN 1995-1-1).",
+    "url": "https://chatgpt.com/g/g-69143f8605d08191a27dc624106469a1-din-en-1995-assistant",
+    "image": "/data/timberDesignAgent.png"
+  },
+  {
+    "title": "DIN 4102-4 Assistant (V1)",
+    "description": "Fire protection standard support, version 1.",
+    "url": "https://chatgpt.com/g/g-68ff693f99e08191aaab30a3e6b3007b-din4102-4-assistant-v1",
+    "image": "/data/din4102Agent-v1.png"
+  },
+  {
+    "title": "DIN 4102-4 Assistant (V2)",
+    "description": "Fire protection standard support, version 2 (latest).",
+    "url": "https://chatgpt.com/g/g-68ff8780ad30819194e54fcd124a7402-din4102-4-assistant-v2",
+    "image": "/data/din4102Agent-v2.png"
+  },
+  {
+    "title": "Eurocode 8 Assistant",
+    "description": "Support for seismic design calculations and standards.",
+    "url": "https://chatgpt.com/g/g-68fb89c716948191864559db8196f30c-eurocode8-assistant",
+    "image": "/data/eurocode8Agent.png"
+  },
+  {
+    "title": "Eurocode 2-DE Assistant",
+    "description": "Support for German concrete design standards.",
+    "url": "https://chatgpt.com/g/g-68fb3ee42e848191b200ec18d6c1ae53-eurocode2-de-assistant",
+    "image": "/data/eurocode2Agent.png"
+  },
+  {
+    "title": "Bautabellen v20 Assistant",
+    "description": "Reference assistant for general design tables and construction data (Version 20).",
+    "url": "https://chatgpt.com/g/g-68fb40d8fc48819192c9b6582ee484a9-bautabellen-20-assistent",
+    "image": "/data/bautabellenAgent.png"
+  }
+]

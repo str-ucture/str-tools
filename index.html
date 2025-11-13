@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-g">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Tools & Agents</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <strong class="company-highlight">str.ucture</strong>
+            </div>
+            <!-- NEW: Request Button -->
+            <a href="mailto:shrestha@str-ucture.com" class="request-button">
+                Make a request
+            </a>
+            <!-- END NEW -->
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>
+            <span class="main-title-text">Tools & Resources</span>
+        </h1>
+
+        <h2>Web Apps & Tools</h2>
+        <div class="project-grid">
+
+            <!-- MODIFIED: The main card is now a div, not an anchor, to hold multiple links -->
+            <div class="project-card">
+                <div class="card-image" style="background: #eee url('https://github.com/str-ucture/str-pdfa-converter/raw/main/assets/app.png') no-repeat center / contain;"></div>
+                <div class="card-content">
+                    <p class="card-tag">GitHub Repo</p>
+                    <h3>StrPDFtoPDFA Converter</h3>
+                    <p>A tool to convert standard PDF files to the PDF/A archival format locally <i>(without uploading it anywhere)</i>.</p>
+                </div>
+                <!-- NEW: Download Links Container -->
+                <div class="download-links">
+                    <a href="https://github.com/str-ucture/str-pdfa-converter" target="_blank" class="download-link github-link">
+                        View on GitHub
+                    </a>
+                    <a href="data/str-pdf.7z" download class="download-link download-btn">
+                        Download (.7z)
+                    </a>
+                </div>
+            </div>
+
+            <a href="https://str-doku-ki-v3-427685891801.us-west1.run.app/" target="_blank" class="project-card">
+                <div class="card-image" style="background: #eee url('/data/strDokuKI.png') no-repeat center / contain;"></div>
+                <div class="card-content">
+                    <p class="card-tag">Web App</p>
+                    <h3>SrtDocumentScanner</h3>
+                    <p>Web-based application for scanning and processing documents. Extract contents of Pdfs directly into text/table format. Also works with scanned documents.</p>
+                </div>
+            </a>
+
+            <a href="https://shailesh-stha.github.io/ImageAnotator/" target="_blank" class="project-card">
+                <div class="card-image" style="background: #eee url('/data/imageAnnotator.png') no-repeat center / contain;"></div>
+                <div class="card-content">
+                    <p class="card-tag">Web App</p>
+                    <h3>Image Annotator</h3>
+                    <p>A simple tool for drawing and exporting annotations on images to be used in Google's Nanobana image editor.</p>
+                </div>
+            </a>
+
+        </div>
+
+
+        <h2>Custom AI Agents</h2>
+
+        <div class="search-container-wrapper">
+            <div class="search-bar-content">
+                <input type="text" id="agent-search" placeholder="Search agents ..." aria-label="Search agents">
+                <span class="search-icon-style">🔍</span>
+                <span class="search-button-style">SEARCH</span>
+            </div>
+            <div class="search-bar-separator"></div>
+        </div>
+
+        <div id="ai-agents-grid" class="project-grid">
+            </div>
+
+    </div>
+
+    <script>
+        const dataFilePath = 'data/agents.json';
+        const gridContainer = document.getElementById('ai-agents-grid');
+        const searchInput = document.getElementById('agent-search');
+        let allAgents = [];
+
+        function createAgentCardHTML(agent) {
+            return `
+                <a href="${agent.url}" target="_blank" class="project-card">
+                    <div class="card-image" style="background: #eee url('${agent.image}') no-repeat center / contain; border-bottom: 1px solid #e0e0e0;"></div>
+                    <div class="card-content">
+                        <p class="card-tag">Custom GPT</p>
+                        <h3>${agent.title}</h3>
+                        <p>${agent.description}</p>
+                    </div>
+                </a>
+            `;
+        }
+
+        function renderAgents(agentsToRender) {
+            const cardsHTML = agentsToRender.map(createAgentCardHTML).join('');
+            gridContainer.innerHTML = cardsHTML;
+
+            if (agentsToRender.length === 0 && allAgents.length > 0) {
+                gridContainer.innerHTML = '<p style="text-align: center; width: 100%; margin-top: 20px;">No agents found matching your filter.</p>';
+            }
+        }
+
+        function filterAndRender() {
+            const searchText = searchInput.value.toLowerCase();
+
+            if (!searchText) {
+                renderAgents(allAgents);
+                return;
+            }
+
+            const filteredAgents = allAgents.filter(agent => {
+                const titleMatch = agent.title.toLowerCase().includes(searchText);
+                const descriptionMatch = agent.description.toLowerCase().includes(searchText);
+                return titleMatch || descriptionMatch;
+            });
+
+            renderAgents(filteredAgents);
+        }
+
+        // Fetch the JSON data (only runs once on load)
+        fetch(dataFilePath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(agents => {
+                allAgents = agents;
+                renderAgents(allAgents);
+
+                // Attach the event listener for filtering
+                searchInput.addEventListener('input', filterAndRender);
+            })
+            .catch(error => {
+                console.error('Error fetching or processing agent data:', error);
+                gridContainer.innerHTML = '<p>Error loading AI agents. Please check the console for details.</p>';
+            });
+
+    </script>
+
+</body>
+</html>

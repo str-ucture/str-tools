@@ -1,0 +1,256 @@
+/* --- GLOBAL STYLING --- */
+body {
+    /* Updated Font Stack (Roboto loaded via <link> in HTML) */
+    font-family: Roboto, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    background-color: #f0f8ff; /* Light blue background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+h1, h2 {
+    font-weight: 300; /* Light weight for combined rule */
+    color: #111;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 50px;
+}
+
+/* Specific rule for H2 to make it bold, overriding the combined rule, as requested */
+h2 {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* --- HEADER STYLING --- */
+header {
+    background-color: rgba(255, 255, 255, 0.95); /* Translucent white background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0; /* 1.5x of 10px */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between; /* To push logo left and button right */
+    align-items: center;
+    height: 45px; /* 1.5x of 30px */
+}
+
+header .logo {
+    font-size: 1.1em;
+}
+
+/* --- TEXT HIGHLIGHTS --- */
+.company-highlight {
+    color: magenta; /* Magenta color for "str.ucture" */
+    font-weight: 900;
+    font-size: 1.5em;
+    text-align: left;
+}
+
+.main-title-text {
+    font-weight: bold; /* Bold for "Tools & Resources" */
+}
+
+/* --- REQUEST BUTTON STYLING (HEADER) --- */
+.request-button {
+    background-color: magenta;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Ensure it aligns perfectly in the middle of the header */
+    display: inline-flex;
+    align-items: center;
+}
+
+.request-button:hover {
+    background-color: #d100d1; /* Slightly darker magenta on hover */
+    transform: translateY(-1px);
+}
+/* --- SEARCH BAR STYLING --- */
+.search-container-wrapper {
+    margin: 20px 40px;
+    margin-bottom: 0;
+}
+
+.search-bar-content {
+    display: flex; /* For horizontal alignment */
+    align-items: center;
+    padding: 5px 0;
+}
+
+#agent-search {
+    flex-grow: 1;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 1.1em;
+    padding: 0 5px;
+    color: #444;
+}
+
+#agent-search::placeholder {
+    color: #999;
+    font-weight: 300;
+    opacity: 1;
+}
+
+.search-icon-style {
+    color: #ff3eb5;
+    font-size: 1.3em;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.search-button-style {
+    color: magenta; /* Same as .company-highlight */
+    font-weight: 700;
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.search-bar-separator {
+    height: 1px;
+    background-color: #ccc;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* --- PROJECT GRID & CARD STYLING --- */
+.project-grid {
+    display: grid;
+    /* Card size reduced to ~80% (300px * 0.8 = 240px) */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    /* Gap size reduced to ~80% (30px * 0.8 = 24px) */
+    gap: 24px;
+}
+
+/* Anchor tag cards (used for the last two cards) */
+a.project-card {
+    text-decoration: none; /* REMOVED: Moved to a:link below for better specificity */
+    color: #333;
+}
+
+/* Ensure no text-decoration on any links inside the cards or the card itself if it is a link */
+.project-card a, 
+a.project-card,
+.project-card a:link,
+.project-card a:visited {
+    text-decoration: none !important;
+}
+
+
+.project-card {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07); /* Darker default shadow */
+    overflow: hidden;
+    /* Removed text-decoration: none and color: #333 here */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer; /* Give the card a pointer style even if it's a div */
+}
+
+/* Reset hover for the project-card, as the links inside handle the interaction */
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.card-image {
+    width: 100%;
+    height: 160px; /* Reduced to 80% of 200px */
+    object-fit: cover;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #e0e0e0; /* Faint grey line */
+}
+
+.card-content {
+    padding: 16px; /* Reduced to 80% of 20px */
+    flex-grow: 1;
+}
+
+/* Card Header (H3) Styling */
+.card-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: calc(1.2em + 2px);
+    font-weight: 900;
+}
+
+.card-content p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 0;
+}
+
+.card-tag {
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #007bff;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+/* --- DOWNLOAD LINKS STYLING (NEW) --- */
+.download-links {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px 16px 16px; /* Padding for bottom and sides */
+    gap: 10px;
+}
+
+.download-link {
+    flex: 1;
+    text-align: center;
+    padding: 8px 5px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 700;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.github-link {
+    background-color: #333;
+    color: white;
+}
+
+.github-link:hover {
+    background-color: #555;
+}
+
+.download-btn {
+    background-color: magenta;
+    color: white;
+}
+
+.download-btn:hover {
+    background-color: #d100d1;
+}
