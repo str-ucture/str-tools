@@ -95,7 +95,7 @@
         function createAgentCardHTML(agent) {
             return `
                 <a href="${agent.url}" target="_blank" class="project-card">
-                    <div class="card-image" style="background: #eee url('${agent.image}') no-repeat center / contain; border-bottom: 1px solid #e0e0e0;"></div>
+                    <div class="card-image" style="background: #eee url(${agent.image}) no-repeat center / contain; border-bottom: 1px solid #e0e0e0;"></div>
                     <div class="card-content">
                         <p class="card-tag">Custom GPT</p>
                         <h3>${agent.title}</h3>
