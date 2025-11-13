@@ -123,7 +123,7 @@ header .logo {
 }
 
 .search-button-style {
-    color: magenta; /* Same as .company-highlight */
+    color: ff3eb5; /* Same as .company-highlight */
     font-weight: 700;
     font-size: 1.1em;
     letter-spacing: 0.5px;
@@ -247,10 +247,10 @@ a.project-card,
 }
 
 .download-btn {
-    background-color: magenta;
+    background-color: ff3eb5;
     color: white;
 }
 
 .download-btn:hover {
-    background-color: #d100d1;
+    background-color: rgb(182, 0, 182);
 }
